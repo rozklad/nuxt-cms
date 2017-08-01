@@ -119,7 +119,7 @@ app.use(__WEBPACK_IMPORTED_MODULE_3_body_parser___default.a.urlencoded({ // to s
 app.use('/api', __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */]);
 
 // Import and Set Nuxt.js options
-var config = __webpack_require__(8);
+var config = __webpack_require__(10);
 config.dev = !("development" === 'production');
 
 // Init Nuxt.js
@@ -158,7 +158,7 @@ module.exports = require("body-parser");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tasks__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__week__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__week__ = __webpack_require__(8);
 
 
 
@@ -235,49 +235,12 @@ module.exports = mongoose.model('Tasks', TaskSchema);
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: 'Weeker',
-    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
-  },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** Run ESLINT on save
-    */
-    extend: function extend(config, ctx) {
-      if (ctx.isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        });
-      }
-    }
-  }
-};
-
-/***/ }),
-/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_week__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_week__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_week___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__models_week__);
 
 
@@ -315,7 +278,7 @@ router.post('/week/update', function (req, res) {
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mongoose = __webpack_require__(1);
@@ -347,6 +310,43 @@ var WeekSchema = new Schema({
 });
 
 module.exports = mongoose.model('Week', WeekSchema);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'Weeker',
+    meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }, { hid: 'description', name: 'description', content: 'Nuxt.js project' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#3B8070' },
+  /*
+  ** Build configuration
+  */
+  build: {
+    /*
+    ** Run ESLINT on save
+    */
+    extend: function extend(config, ctx) {
+      if (ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        });
+      }
+    }
+  }
+};
 
 /***/ })
 /******/ ]);

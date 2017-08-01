@@ -5,10 +5,15 @@
   "author": "Matej Lukas <matejlukas12@gmail.com>",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "marked": "^0.3.6",
+    "mongoose": "^4.11.5",
     "nuxt": "latest"
   },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "backpack dev",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -17,6 +22,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "backpack-core": "^0.4.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-config-standard": "^6.2.1",

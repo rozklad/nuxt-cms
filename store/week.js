@@ -19,7 +19,7 @@ export const getters = {
 export const actions = {
   getActualWeek({ commit }, options) {
     axios.get(`api/week/${options.year}/${options.number}`).then((response) => {
-      if (response.data.length !== 0) {
+      if (response.data) {
         commit('receiveActualWeek', response.data);
       } else {
         axios.post('api/week', options).then((week) => {

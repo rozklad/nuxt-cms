@@ -24,7 +24,9 @@ For detailed explanation on how things work, checkout the [Nuxt.js docs](https:/
 ## Dokku deployment
 
 ```
-// on Dokku Server
+dokku mongo:create my-db-name
+dokku mongo:link my-db-name my-nuxt-app
+dokku mongo:promote my-db-name my-nuxt-app
 dokku config:set my-nuxt-app NPM_CONFIG_PRODUCTION=false
 dokku config:set my-nuxt-app HOST=0.0.0.0 NODE_ENV=production
 ```

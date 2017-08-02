@@ -20,7 +20,8 @@
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint",
     "unit": "karma start test/unit/karma.conf.js",
-    "e2e": "node test/e2e/runner.js"
+    "e2e": "node test/e2e/runner.js",
+    "test": "npm run unit"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

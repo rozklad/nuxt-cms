@@ -79,55 +79,81 @@ module.exports = require("mongoose");
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_nuxt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_nuxt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mongoose__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mongoose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mongoose__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_body_parser__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_body_parser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_body_parser__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api__ = __webpack_require__(5);
 
 
+// require babel-register and set Babel presets options to es2015
+__webpack_require__(3)({
+  presets: ['es2015']
+});
+
+__webpack_require__(4);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("babel-register");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+var _express = __webpack_require__(0);
 
+var _express2 = _interopRequireDefault(_express);
 
+var _nuxt = __webpack_require__(5);
 
-var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
+var _mongoose = __webpack_require__(1);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _bodyParser = __webpack_require__(6);
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _routes = __webpack_require__(7);
+
+var _routes2 = _interopRequireDefault(_routes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var app = (0, _express2.default)();
 var host = process.env.HOST || '127.0.0.1';
 var port = process.env.PORT || 3000;
 
 app.set('port', port);
 
 // MongoDb
-__WEBPACK_IMPORTED_MODULE_2_mongoose___default.a.Promise = global.Promise;
-__WEBPACK_IMPORTED_MODULE_2_mongoose___default.a.connect('mongodb://localhost/weeker');
+var mongodbhost = process.env.MONGO_URL || 'mongodb://localhost/weeker';
+_mongoose2.default.Promise = global.Promise;
+_mongoose2.default.connect(mongodbhost);
 
 // Body-parser settings
-app.use(__WEBPACK_IMPORTED_MODULE_3_body_parser___default.a.json()); // to support JSON-encoded bodies
-app.use(__WEBPACK_IMPORTED_MODULE_3_body_parser___default.a.urlencoded({ // to support URL-encoded bodies
+app.use(_bodyParser2.default.json()); // to support JSON-encoded bodies
+app.use(_bodyParser2.default.urlencoded({ // to support URL-encoded bodies
   extended: true
 }));
 
 // Import API Router
-app.use('/api', __WEBPACK_IMPORTED_MODULE_4__api__["a" /* default */]);
+app.use('/api', _routes2.default);
 
 // Import and Set Nuxt.js options
-var config = __webpack_require__(10);
+var config = __webpack_require__(12);
 config.dev = !("development" === 'production');
 
 // Init Nuxt.js
-var nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt__["Nuxt"](config);
+var nuxt = new _nuxt.Nuxt(config);
 
 // Build only in dev mode
 if (config.dev) {
-  var builder = new __WEBPACK_IMPORTED_MODULE_1_nuxt__["Builder"](nuxt);
+  var builder = new _nuxt.Builder(nuxt);
   builder.build();
 }
 
@@ -139,76 +165,95 @@ app.listen(port, host);
 console.log('Server listening on ' + host + ':' + port); // eslint-disable-line no-console
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("nuxt");
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tasks__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__week__ = __webpack_require__(8);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
+var _express = __webpack_require__(0);
 
+var _tasks = __webpack_require__(8);
 
-var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
+var _tasks2 = _interopRequireDefault(_tasks);
+
+var _week = __webpack_require__(10);
+
+var _week2 = _interopRequireDefault(_week);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = (0, _express.Router)();
 
 // Add TASKS Routes
-router.use(__WEBPACK_IMPORTED_MODULE_1__tasks__["a" /* default */]);
+router.use(_tasks2.default);
 
 // Add WEEK Routes
-router.use(__WEBPACK_IMPORTED_MODULE_2__week__["a" /* default */]);
+router.use(_week2.default);
 
-/* harmony default export */ __webpack_exports__["a"] = (router);
+exports.default = router;
 
 /***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_task__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_task___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__models_task__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
+var _express = __webpack_require__(0);
+
+var _task = __webpack_require__(9);
+
+var _task2 = _interopRequireDefault(_task);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = (0, _express.Router)();
 
 /* GET users listing. */
 router.get('/tasks', function (req, res, next) {
-  __WEBPACK_IMPORTED_MODULE_1__models_task___default.a.find({}, function (err, task) {
+  _task2.default.find({}, function (err, task) {
     if (err) res.send(err);
     res.json(task);
   });
 });
 
 router.post('/tasks', function (req, res) {
-  var new_task = new __WEBPACK_IMPORTED_MODULE_1__models_task___default.a(req.body);
+  var new_task = new _task2.default(req.body);
   new_task.save(function (err, task) {
     if (err) res.send(err);
     res.json(task);
   });
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (router);
+exports.default = router;
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var mongoose = __webpack_require__(1);
 var Schema = mongoose.Schema;
@@ -234,23 +279,30 @@ var TaskSchema = new Schema({
 module.exports = mongoose.model('Tasks', TaskSchema);
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_week__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_week___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__models_week__);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-var router = Object(__WEBPACK_IMPORTED_MODULE_0_express__["Router"])();
+var _express = __webpack_require__(0);
+
+var _week = __webpack_require__(11);
+
+var _week2 = _interopRequireDefault(_week);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var router = (0, _express.Router)();
 
 /* GET users listing. */
 router.get('/week/:year/:number', function (req, res, next) {
   console.log('hola prdel');
-  __WEBPACK_IMPORTED_MODULE_1__models_week___default.a.findOne({ year: req.params.year, number: req.params.number }, function (err, week) {
+  _week2.default.findOne({ year: req.params.year, number: req.params.number }, function (err, week) {
     if (err) res.send(err);
     console.log(week);
     res.json(week);
@@ -259,7 +311,7 @@ router.get('/week/:year/:number', function (req, res, next) {
 
 /* POST create new week */
 router.post('/week', function (req, res) {
-  var new_week = new __WEBPACK_IMPORTED_MODULE_1__models_week___default.a(req.body);
+  var new_week = new _week2.default(req.body);
   new_week.save(function (err, week) {
     if (err) res.send(err);
     res.json(week);
@@ -269,17 +321,20 @@ router.post('/week', function (req, res) {
 /* POST update week */
 router.post('/week/update', function (req, res) {
   var data = req.body;
-  __WEBPACK_IMPORTED_MODULE_1__models_week___default.a.findOneAndUpdate({ number: data.number, year: data.year }, req.body, { new: true }, function (err, week) {
+  _week2.default.findOneAndUpdate({ number: data.number, year: data.year }, req.body, { new: true }, function (err, week) {
     if (err) res.send(err);
     res.json(week);
   });
 });
 
-/* harmony default export */ __webpack_exports__["a"] = (router);
+exports.default = router;
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 var mongoose = __webpack_require__(1);
 var Schema = mongoose.Schema;
@@ -312,8 +367,11 @@ var WeekSchema = new Schema({
 module.exports = mongoose.model('Week', WeekSchema);
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 module.exports = {
   /*

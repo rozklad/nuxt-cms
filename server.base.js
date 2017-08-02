@@ -11,9 +11,8 @@ const port = process.env.PORT || 3000;
 
 app.set('port', port);
 
-const mongodbhost = process.env.MONGO_URL || 'mongodb://localhost/weeker';
-
 // MongoDb
+const mongodbhost = process.env.MONGO_URL || 'mongodb://localhost/weeker';
 mongoose.Promise = global.Promise;
 mongoose.connect(mongodbhost);
 
